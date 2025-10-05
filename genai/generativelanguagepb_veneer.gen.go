@@ -1658,7 +1658,7 @@ func (v *VideoMetadata) toProto() *pb.VideoFileMetadata {
 		return nil
 	}
 	return &pb.VideoFileMetadata{
-		VideoDuration: durationpb.New(v.VideoDuration),
+		VideoDuration: durationpb.New(v.Duration),
 	}
 }
 
@@ -1668,7 +1668,7 @@ func (VideoMetadata) fromProto(p *pb.VideoFileMetadata) *VideoMetadata {
         return nil
     }
     return &VideoMetadata{
-        VideoDuration: pvDurationFromProto(p.VideoDuration),
+        Duration: pvDurationFromProto(p.VideoDuration),
     }
 }
 
