@@ -1652,21 +1652,23 @@ type VideoMetadata struct {
 	Duration time.Duration
 }
 
-func (v *VideoMetadata) toProto() *pb.VideoMetadata {
+// Konversi dari struct Go (veneer) ke Protobuf
+func (v *VideoMetadata) toProto() *pb.VideoFileMetadata {
 	if v == nil {
 		return nil
 	}
-	return &pb.VideoMetadata{
-		VideoDuration: durationpb.New(v.Duration),
+	return &pb.VideoFileMetadata{
+		Duration: durationpb.New(v.Duration),
 	}
 }
 
-func (VideoMetadata) fromProto(p *pb.VideoMetadata) *VideoMetadata {
+// Konversi dari Protobuf ke struct Go (veneer)
+func (VideoMetadata) fromProto(p *pb.VideoFileMetadata) *VideoMetadata {
 	if p == nil {
 		return nil
 	}
 	return &VideoMetadata{
-		Duration: pvDurationFromProto(p.VideoDuration),
+		Duration: pvDurationFromProto(p.Duration),
 	}
 }
 
