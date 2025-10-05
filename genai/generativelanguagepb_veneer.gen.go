@@ -1664,12 +1664,12 @@ func (v *VideoMetadata) toProto() *pb.VideoFileMetadata {
 
 // fromProto converts VideoFileMetadata (protobuf) to VideoMetadata (veneer)
 func (VideoMetadata) fromProto(p *pb.VideoFileMetadata) *VideoMetadata {
-	if p == nil {
-		return nil
-	}
-	return &VideoMetadata{
-		VideoDuration: pvDurationFromProto(p.VideoDuration),
-	}
+    if p == nil {
+        return nil
+    }
+    return &VideoMetadata{
+        Duration: pvDurationFromProto(p.VideoDuration),
+    }
 }
 
 func pvTransformSlice[From, To any](from []From, f func(From) To) []To {
